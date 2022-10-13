@@ -1,0 +1,4 @@
+1. Start projektu
+    a) npm i express-generator ./ - generowanie projektu automatyczne
+    b) następnie npm install 
+    c) potem po prostu npm start i serwer działa
