@@ -2,3 +2,10 @@
     a) npm i express-generator ./ - generowanie projektu automatyczne
     b) następnie npm install 
     c) potem po prostu npm start i serwer działa
+
+2. Tworzenie sesji za pomocą session-cookie 
+    a) tworzymy sesje req.session.[nazwaSesji]
+
+3. Router.all('*', (req, res, next) => {...;  next() })
+    a) nie rozróżnia typu (post, delete, put itp)
+    b) metoda wykona się pod każdym routerem

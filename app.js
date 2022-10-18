@@ -1,3 +1,7 @@
+// Cookie-session
+var cookieSession = require('cookie-session')
+var express = require('express')
+
 var createError = require('http-errors');
 var express = require('express');
 var path = require('path');
@@ -9,11 +13,20 @@ var newsRouter = require('./routes/news');
 var quizRouter = require('./routes/quiz'); 
 var adminRouter = require('./routes/admin'); 
 
-
 var app = express();
 
+var config = require('./config')
+// Cookie-session
+app.use(cookieSession({
+  name: 'session', // 
+  keys: config.keySession, // klucz który podpisuje sesję
+
+  // Cookie Options
+  maxAge: config.maxAgeSession // 24 hours - maksymalny czas przechowywania cookies
+}))
+
 // Ustawienie nasłuchiwania
-const myPort = process.env.port || 3000;
+const myPort = process.env.port || 3001;
 
 app.listen(myPort, '127.0.0.1', () => {
     //console.log("Nasłuchujemy na porcie: " + myPort)
