@@ -1,6 +1,9 @@
 const express = require('express');
 const router = express.Router();
 
+// Importujemy modele
+const News = require('../models/news')
+
 router.all('*', (req, res, next) => { // aby przechwycić wszystkie zapytania do admin 
   if(!req.session.admin){
     res.redirect('login')
@@ -13,6 +16,16 @@ router.all('*', (req, res, next) => { // aby przechwycić wszystkie zapytania do
 
 /* GET home page. */
 router.get('/', (req, res) => {
+
+  const newsData = new News({
+    title: 'Tytuł testowy',
+    description: 'Opis'
+  })
+
+  newsData.save((err) => {
+    console.log(err)
+  })
+
   res.render('admin', { title: 'Admin' });
 });
 

@@ -1,0 +1,4 @@
+Przechowujemy tutaj modele dla tabel w bazie danych
+
+1. Dodając title: { string } nawiasy wymagamy tej wartości
+    a tutaj description: String, nie wymagamy opisu.

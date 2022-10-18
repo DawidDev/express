@@ -8,6 +8,18 @@ var path = require('path');
 var cookieParser = require('cookie-parser'); // Wspiera w parsowaniu cookies
 var logger = require('morgan'); // służy do rzucenia logów w trybie developerskim
 
+var config = require('./config')
+
+// Obsługa połączenia z bazą danych i walidacja
+const mongoose = require('mongoose'); 
+mongoose.connect(config.db); // łączenie
+// walidacja
+var db = mongoose.connection  
+db.on('error', console.error.bind(console, 'connection error'));
+db.once('open', function() {
+  console.log('połączony')
+})
+
 var indexRouter = require('./routes/index'); // import strony startowej
 var newsRouter = require('./routes/news'); 
 var quizRouter = require('./routes/quiz'); 
@@ -15,7 +27,7 @@ var adminRouter = require('./routes/admin');
 
 var app = express();
 
-var config = require('./config')
+
 // Cookie-session
 app.use(cookieSession({
   name: 'session', // 
